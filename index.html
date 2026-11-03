@@ -1,1 +1,150 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imperio Cripto | IMC</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;background:#0b1020;color:white;
+ font-family:Arial,sans-serif;padding-bottom:85px
+}
+header{
+ background:#151d32;padding:22px 18px;
+ border-bottom:1px solid #b58a36
+}
+header h2{color:#e9bd58;margin:0}
+header p{color:#aeb8cb;margin-bottom:0}
+main{padding:18px}
+.card{
+ background:#17223a;padding:18px;
+ border-radius:14px;margin-bottom:16px;
+ border:1px solid #34425e
+}
+.balance{font-size:28px;color:#f3c75e;margin:12px 0}
+h3{color:#f3c75e}
+button{
+ background:#c99b42;color:#101522;
+ border:0;border-radius:9px;
+ padding:12px;font-weight:bold;
+ cursor:pointer
+}
+nav{
+ position:fixed;bottom:0;left:0;right:0;
+ background:#151d32;display:flex;
+ justify-content:space-around;padding:12px 2px;
+ border-top:1px solid #b58a36
+}
+nav button{
+ background:transparent;color:white;
+ padding:8px 4px;font-size:11px
+}
+input{
+ width:100%;padding:13px;margin:8px 0;
+ border-radius:8px;border:1px solid #52617c;
+ background:#0b1020;color:white
+}
+.page{display:none}
+.page.active{display:block}
+small{color:#b5bfd0}
+</style>
+</head>
+<body>
+
+<header>
+<h2>👑 IMPERIO CRIPTO</h2>
+<p>IMPERIO COIN · IMC</p>
+</header>
+
+<main>
+
+<section id="inicio" class="page active">
+<div class="card">
+<h3>Bienvenido a Imperio</h3>
+<small>Saldo depositado</small>
+<div class="balance">$0.00</div>
+<small>Saldo disponible: $0.00</small>
+</div>
+<div class="card">
+<h3>Mis operaciones</h3>
+<p>Consulta tus movimientos y solicitudes.</p>
+</div>
+<div class="card">
+<h3>Seguridad</h3>
+<p>Tus operaciones están sujetas a las reglas de la plataforma.</p>
+</div>
+</section>
+
+<section id="planes" class="page">
+<div class="card">
+<h3>Planes IMC</h3>
+<p>Consulta los planes disponibles.</p>
+<small>Los planes y sus condiciones estarán sujetos a validación antes de activarse.</small>
+</div>
+</section>
+
+<section id="depositos" class="page">
+<div class="card">
+<h3>Depósitos</h3>
+<p>Consulta las instrucciones para registrar un depósito.</p>
+<button onclick="alert('Próximamente: registro de depósitos')">Solicitar depósito</button>
+</div>
+</section>
+
+<section id="retiros" class="page">
+<div class="card">
+<h3>Solicitar retiro</h3>
+<p>Introduce el importe solicitado.</p>
+<input type="number" placeholder="Importe en USD">
+<p>Contraseña personal de retiros</p>
+<input type="password" placeholder="Tu contraseña de retiros">
+<button onclick="alert('Prototipo: los retiros requerirán verificación y aprobación manual de la administradora.')">Enviar solicitud</button>
+<p><small>Todo retiro requiere aprobación exclusiva de la administradora.</small></p>
+</div>
+</section>
+
+<section id="transferencias" class="page">
+<div class="card">
+<h3>Transferencias</h3>
+<p>Consulta y solicita transferencias.</p>
+<button onclick="alert('Próximamente: solicitudes de transferencia')">Nueva solicitud</button>
+</div>
+</section>
+
+<section id="perfil" class="page">
+<div class="card">
+<h3>Mi perfil</h3>
+<p>Correo electrónico</p>
+<input type="email" placeholder="Tu correo">
+<h3>Seguridad de retiros</h3>
+<input type="password" placeholder="Crear contraseña de retiros">
+<input type="password" placeholder="Confirmar contraseña">
+<button onclick="alert('La configuración segura se habilitará al conectar el sistema de cuentas.')">Configurar seguridad</button>
+</div>
+</section>
+
+</main>
+
+<nav>
+<button onclick="showPage('inicio')">🏠<br>Inicio</button>
+<button onclick="showPage('planes')">📋<br>Planes</button>
+<button onclick="showPage('depositos')">💰<br>Depósitos</button>
+<button onclick="showPage('retiros')">⬆️<br>Retiros</button>
+<button onclick="showPage('transferencias')">🔄<br>Transferir</button>
+<button onclick="showPage('perfil')">👤<br>Perfil</button>
+</nav>
+
+<script>
+function showPage(id){
+ document.querySelectorAll('.page').forEach(p=>{
+  p.classList.remove('active');
+ });
+ document.getElementById(id).classList.add('active');
+}
+</script>
+
+</body>
+</html>
+
