@@ -1,150 +1,189 @@
-
+ 
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Imperio Cripto | IMC</title>
+<title>IMPERIO CRIPTO</title>
 <style>
 *{box-sizing:border-box}
 body{
- margin:0;background:#0b1020;color:white;
- font-family:Arial,sans-serif;padding-bottom:85px
+ margin:0;background:#080808;color:#fff;
+ font-family:Arial,sans-serif
 }
 header{
- background:#151d32;padding:22px 18px;
- border-bottom:1px solid #b58a36
+ background:linear-gradient(120deg,#080808,#29200b);
+ padding:24px 16px;border-bottom:1px solid #b58b28;
+ text-align:center
 }
-header h2{color:#e9bd58;margin:0}
-header p{color:#aeb8cb;margin-bottom:0}
-main{padding:18px}
-.card{
- background:#17223a;padding:18px;
- border-radius:14px;margin-bottom:16px;
- border:1px solid #34425e
-}
-.balance{font-size:28px;color:#f3c75e;margin:12px 0}
-h3{color:#f3c75e}
-button{
- background:#c99b42;color:#101522;
- border:0;border-radius:9px;
- padding:12px;font-weight:bold;
- cursor:pointer
-}
+.logo{font-size:27px;font-weight:bold;color:#e8bd50;letter-spacing:3px}
+header p{color:#d4bd82;margin-bottom:0}
 nav{
- position:fixed;bottom:0;left:0;right:0;
- background:#151d32;display:flex;
- justify-content:space-around;padding:12px 2px;
- border-top:1px solid #b58a36
+ display:flex;flex-wrap:wrap;justify-content:center;
+ background:#111;padding:10px;gap:7px
 }
 nav button{
- background:transparent;color:white;
- padding:8px 4px;font-size:11px
+ background:#211b0d;color:#eac45c;border:1px solid #8e6b22;
+ border-radius:7px;padding:10px;cursor:pointer
+}
+main{max-width:1050px;margin:auto;padding:16px}
+h2{color:#eac45c}
+.grid{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+ gap:14px
+}
+.card{
+ background:linear-gradient(145deg,#191919,#0b0b0b);
+ border:1px solid #8e6b22;border-radius:13px;
+ padding:20px;margin-bottom:15px
+}
+.card h3{color:#eac45c;margin-top:0}
+.amount{font-size:27px;color:#f2cc68;font-weight:bold}
+.small{color:#aaa;font-size:13px}
+button.gold{
+ background:linear-gradient(90deg,#b17b16,#f4d16b);
+ color:#15100a;border:0;padding:12px 18px;
+ border-radius:8px;font-weight:bold;cursor:pointer
 }
 input{
- width:100%;padding:13px;margin:8px 0;
- border-radius:8px;border:1px solid #52617c;
- background:#0b1020;color:white
+ width:100%;padding:12px;margin:8px 0;
+ background:#171717;color:white;border:1px solid #a47b2b;
+ border-radius:7px
 }
-.page{display:none}
-.page.active{display:block}
-small{color:#b5bfd0}
+section{margin-top:20px}
+.hidden{display:none}
+.notice{
+ padding:13px;background:#211b0d;
+ border-left:3px solid #eac45c;
+ color:#e8d6a5;border-radius:5px;font-size:13px
+}
+footer{text-align:center;color:#9b8650;padding:25px}
 </style>
 </head>
 <body>
 
 <header>
-<h2>👑 IMPERIO CRIPTO</h2>
-<p>IMPERIO COIN · IMC</p>
+ <div class="logo">♛ IMPERIO CRIPTO ♛</div>
+ <p>Tu confianza nos impulsa a crecer</p>
 </header>
+
+<nav>
+ <button onclick="show('inicio')">Inicio</button>
+ <button onclick="show('perfil')">Mi perfil</button>
+ <button onclick="show('saldos')">Mis saldos</button>
+ <button onclick="show('planes')">Planes</button>
+ <button onclick="show('movimientos')">Movimientos</button>
+ <button onclick="show('solicitudes')">Solicitudes</button>
+</nav>
 
 <main>
 
-<section id="inicio" class="page active">
-<div class="card">
-<h3>Bienvenido a Imperio</h3>
-<small>Saldo depositado</small>
-<div class="balance">$0.00</div>
-<small>Saldo disponible: $0.00</small>
-</div>
-<div class="card">
-<h3>Mis operaciones</h3>
-<p>Consulta tus movimientos y solicitudes.</p>
-</div>
-<div class="card">
-<h3>Seguridad</h3>
-<p>Tus operaciones están sujetas a las reglas de la plataforma.</p>
-</div>
+<section id="inicio">
+ <h2>♛ Bienvenido a Imperio</h2>
+ <div class="grid">
+  <div class="card">
+   <h3>Saldo disponible</h3>
+   <div class="amount">$0.00</div>
+  </div>
+  <div class="card">
+   <h3>Saldo depositado</h3>
+   <div class="amount">$0.00</div>
+  </div>
+  <div class="card">
+   <h3>Mi cuenta</h3>
+   <p>Consulta tu información y movimientos.</p>
+  </div>
+ </div>
+ <div class="notice">
+  Plataforma de demostración. Los saldos y operaciones
+  reales requieren conexión segura y validación.
+ </div>
 </section>
 
-<section id="planes" class="page">
-<div class="card">
-<h3>Planes IMC</h3>
-<p>Consulta los planes disponibles.</p>
-<small>Los planes y sus condiciones estarán sujetos a validación antes de activarse.</small>
-</div>
+<section id="perfil" class="hidden">
+ <h2>Mi perfil</h2>
+ <div class="card">
+  <h3>Información personal</h3>
+  <input placeholder="Nombre completo">
+  <input type="email" placeholder="Correo electrónico">
+  <button class="gold" onclick="alert('Conecta el sistema de cuentas para guardar cambios.')">Guardar</button>
+ </div>
 </section>
 
-<section id="depositos" class="page">
-<div class="card">
-<h3>Depósitos</h3>
-<p>Consulta las instrucciones para registrar un depósito.</p>
-<button onclick="alert('Próximamente: registro de depósitos')">Solicitar depósito</button>
-</div>
+<section id="saldos" class="hidden">
+ <h2>Mis saldos</h2>
+ <div class="grid">
+  <div class="card">
+   <h3>Saldo disponible</h3>
+   <div class="amount">$0.00</div>
+  </div>
+  <div class="card">
+   <h3>Saldo depositado</h3>
+   <div class="amount">$0.00</div>
+  </div>
+ </div>
+ <p class="small">Los saldos reales serán administrados mediante registros seguros.</p>
 </section>
 
-<section id="retiros" class="page">
-<div class="card">
-<h3>Solicitar retiro</h3>
-<p>Introduce el importe solicitado.</p>
-<input type="number" placeholder="Importe en USD">
-<p>Contraseña personal de retiros</p>
-<input type="password" placeholder="Tu contraseña de retiros">
-<button onclick="alert('Prototipo: los retiros requerirán verificación y aprobación manual de la administradora.')">Enviar solicitud</button>
-<p><small>Todo retiro requiere aprobación exclusiva de la administradora.</small></p>
-</div>
+<section id="planes" class="hidden">
+ <h2>♛ Nuestros planes</h2>
+ <div class="grid">
+  <div class="card">
+   <h3>Plan Básico</h3>
+   <p>Información del plan pendiente de validación.</p>
+   <button class="gold" onclick="alert('Plan pendiente de configuración y validación.')">Ver plan</button>
+  </div>
+  <div class="card">
+   <h3>Plan Premium</h3>
+   <p>Información del plan pendiente de validación.</p>
+   <button class="gold" onclick="alert('Plan pendiente de configuración y validación.')">Ver plan</button>
+  </div>
+  <div class="card">
+   <h3>Plan Elite</h3>
+   <p>Información del plan pendiente de validación.</p>
+   <button class="gold" onclick="alert('Plan pendiente de configuración y validación.')">Ver plan</button>
+  </div>
+ </div>
+ <div class="notice">
+  Los rendimientos no están garantizados. Cualquier simulación
+  deberá identificarse claramente y no representa ganancias reales.
+ </div>
 </section>
 
-<section id="transferencias" class="page">
-<div class="card">
-<h3>Transferencias</h3>
-<p>Consulta y solicita transferencias.</p>
-<button onclick="alert('Próximamente: solicitudes de transferencia')">Nueva solicitud</button>
-</div>
+<section id="movimientos" class="hidden">
+ <h2>Últimos movimientos</h2>
+ <div class="card">
+  <p>No hay movimientos registrados.</p>
+ </div>
 </section>
 
-<section id="perfil" class="page">
-<div class="card">
-<h3>Mi perfil</h3>
-<p>Correo electrónico</p>
-<input type="email" placeholder="Tu correo">
-<h3>Seguridad de retiros</h3>
-<input type="password" placeholder="Crear contraseña de retiros">
-<input type="password" placeholder="Confirmar contraseña">
-<button onclick="alert('La configuración segura se habilitará al conectar el sistema de cuentas.')">Configurar seguridad</button>
-</div>
+<section id="solicitudes" class="hidden">
+ <h2>Solicitudes</h2>
+ <div class="card">
+  <h3>Solicitud de retiro</h3>
+  <input type="number" min="0" placeholder="Cantidad a solicitar">
+  <input type="password" placeholder="Contraseña personal de retiro">
+  <button class="gold" onclick="alert('La solicitud real requiere conexión segura. La contraseña solo verifica tu identidad. El retiro necesita aprobación manual de la administradora.')">Enviar solicitud</button>
+  <p class="small">Estado de ejemplo: En revisión.</p>
+  <p class="small">Los retiros requieren aprobación manual exclusiva de la administradora.</p>
+ </div>
 </section>
 
 </main>
 
-<nav>
-<button onclick="showPage('inicio')">🏠<br>Inicio</button>
-<button onclick="showPage('planes')">📋<br>Planes</button>
-<button onclick="showPage('depositos')">💰<br>Depósitos</button>
-<button onclick="showPage('retiros')">⬆️<br>Retiros</button>
-<button onclick="showPage('transferencias')">🔄<br>Transferir</button>
-<button onclick="showPage('perfil')">👤<br>Perfil</button>
-</nav>
+<footer>
+ ♛ IMPERIO CRIPTO ♛
+ <p>Elegancia · Confianza · Transparencia</p>
+</footer>
 
 <script>
-function showPage(id){
- document.querySelectorAll('.page').forEach(p=>{
-  p.classList.remove('active');
+function show(id){
+ document.querySelectorAll('main section').forEach(s=>{
+  s.classList.add('hidden');
  });
- document.getElementById(id).classList.add('active');
+ document.getElementById(id).classList.remove('hidden');
+ window.scrollTo(0,0);
 }
 </script>
-
 </body>
 </html>
-
