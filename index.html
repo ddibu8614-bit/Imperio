@@ -162,7 +162,10 @@ async function iniciarPanel(){
 
   document.getElementById("correo").value=usuario.email||"";
   document.getElementById("bienvenida").textContent="Sesión iniciada: "+usuario.email+" | Admin: "+(errorAdmin?"ERROR "+errorAdmin.message:admin);
-
+const botonAdmin=document.getElementById("btnAdmin");
+if(botonAdmin){
+  botonAdmin.classList.toggle("hidden",!window.esAdministrador);
+}
   mostrar("inicio");
   await cargarDatos();
 }
