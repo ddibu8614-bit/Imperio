@@ -213,7 +213,36 @@ if(botonAdmin){
   await cargarDatos();
 }
 
-async function cargarDatos(){
+async function cargarDatos(){async function cargarUsuarios(){
+  const lista=document.getElementById("usuariosLista");
+
+  if(!window.esAdministrador){
+    lista.textContent="Acceso no autorizado.";
+    return;
+  }
+
+  lista.textContent="Cargando usuarios...";
+
+  const {data,error}=await db.rpc("admin_listar_usuarios");
+
+  if(error){
+    lista.textContent="Error: "+error.message;
+    return;
+  }
+
+  if(!data||data.length===0){
+    lista.textContent="No hay usuarios registrados.";
+    return;
+  }
+
+  lista.textContent=data.map((u,i)=>
+    "Usuario "+(i+1)+
+    "\nNombre: "+(u.nombre||"Sin nombre")+
+    "\nCorreo: "+(u.correo||"Sin correo")+
+    "\nRol: "+(u.rol||"usuario")+
+    "\nRegistro: "+(u.creado_en||"No disponible")
+  ).join("\n\n");
+}
 let p=await db.from("perfiles").select("nombre").eq("id",usuario.id).maybeSingle();
 if(!p.error)document.getElementById("nombre").value=p.data?.nombre||"";
 
