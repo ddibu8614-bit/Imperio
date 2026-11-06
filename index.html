@@ -146,9 +146,24 @@ const db=window.supabase.createClient(URL_SUPABASE,CLAVE_PUBLICA);
 let usuario=null;
 
 function mostrar(id){
-document.querySelectorAll("main section").forEach(s=>s.classList.add("hidden"));
-document.getElementById(id).classList.remove("hidden");
-window.scrollTo(0,0);
+  if(id==="administracion" && !window.esAdministrador){
+    alert("Acceso exclusivo para administración.");
+    return;
+  }
+
+  const seccion=document.getElementById(id);
+
+  if(!seccion){
+    alert("No se encontró esta sección.");
+    return;
+  }
+
+  document.querySelectorAll("main section").forEach(s=>{
+    s.classList.add("hidden");
+  });
+
+  seccion.classList.remove("hidden");
+  window.scrollTo(0,0);
 }
 
 async function registrar(){
