@@ -148,15 +148,27 @@ await iniciarPanel();
 function mensaje(t){document.getElementById("mensaje").textContent=t;}
 
 async function iniciarPanel(){
-let {data,error}=await db.auth.getUser();
-if(error||!data.user)return;
-usuario=data.user;
-document.getElementById("acceso").classList.add("hidden");
-document.getElementById("panel").classList.remove("hidden");
-document.getElementById("correo").value=usuario.email||"";
-document.getElementById("bienvenida").textContent="Sesión iniciada: "+usuario.email;
-mostrar("inicio");
-await cargarDatos();
+  let {data,error}=await db.auth.getUser();
+  if(error||!data.user)return;
+
+  usuario=data.user;
+
+  let {data:admin,error:errorAdmin}=await db.rpc("es_admin");
+  window.esAdministrador = !errorAdmin && admin === true;
+
+  document.getElementById("acceso").classList.add("hidden");
+  document.getElementById("panel").classList.remove("hidden");
+
+  document.getElementById("correo").value=usuario.email||"";
+  document.getElementById("bienvenida").textContent="Sesión iniciada: "+usuario.email;
+
+  const botonAdmin=document.getElementById("btnAdmin");
+  if(botonAdmin){
+    botonAdmin.classList.toggle("hidden",!window.esAdministrador);
+  }
+
+  mostrar("inicio");
+  await cargarDatos();
 }
 
 async function cargarDatos(){
